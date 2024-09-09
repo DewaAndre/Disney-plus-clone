@@ -21,7 +21,7 @@ function ProduktionHouse() {
   ];
 
   return (
-    <div className="flex justify-around overflow-x-auto p-5 px-10 md:px-16 gap-2">
+    <div className="flex justify-around overflow-x-auto scrollbar-hide scroll-smooth p-5 px-10 md:px-16 gap-2">
       {productionHouseList.map((item) => (
         <div
           key={item.id}
