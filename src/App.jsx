@@ -1,24 +1,31 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './components/Header'
-import Slider from './components/Slider'
-import ProduktionHouse from './components/ProduktionHouse'
-import GenreMovieList from './components/GenreMovieList'
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Slider from './components/Slider';
+import ProduktionHouse from './components/ProduktionHouse';
+import GenreMovieList from './components/GenreMovieList';
+import DetailMovie from './pages/detail/DetailMovie';
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className=''>
-      <Header />
-
-      <Slider />
-
-      <ProduktionHouse /> 
-
-      <GenreMovieList />
-    </div>
-  )
+    <Router>
+      <div className=''>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<DetailMovie />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+function Home() {
+  return (
+    <>
+      <Slider />
+      <ProduktionHouse />
+      <GenreMovieList />
+    </>
+  );
+}
+
+export default App;
