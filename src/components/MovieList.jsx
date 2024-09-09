@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import GlobalApi from '../services/GlobalApi';
 import MovieCard from './MovieCard';
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
-import HrMovieCard from './HrMovieCard';
 
 const screenWidth = window.innerWidth;
 
@@ -16,7 +15,6 @@ function MovieList({ genreId, index_ }) {
 
     const getMovieByGenreId = () => {
         GlobalApi.getMovieByGenreId(genreId).then(resp => {
-            // console.log(resp.data.results)
             setMoviesList(resp.data.results);
         }).catch(error => {
             console.error('Error fetching movies by genre:', error);
@@ -40,21 +38,19 @@ function MovieList({ genreId, index_ }) {
             <HiChevronLeft 
                 onClick={() => sliderLeft(elementRef.current)} 
                 className={`text-[50px] text-white p-2 z-10 cursor-pointer hidden md:block absolute
-                 ${index_%3==0? 'mt-[80px]' : 'mt-[150px]'}`} 
+                 ${index_ % 4 === 0 ? 'mt-[80px]' : 'mt-[150px]'}`} 
             /> 
 
             <div ref={elementRef} className='flex overflow-x-auto gap-8 scrollbar-hide scroll-smooth pt-5 px-3 pb-5'>
                 {movieList.map((item, index) => (
-                    <>
-                        {index_%3==0? <HrMovieCard movie={item} /> : <MovieCard key={index} movie={item} />}
-                    </>
+                    <MovieCard key={index} movie={item} />
                 ))}
             </div>
 
             <HiChevronRight 
                 onClick={() => sliderRight(elementRef.current)} 
                 className={`text-[50px] text-white p-2 z-10 top-0 cursor-pointer hidden md:block right-0 absolute
-                ${index_%3==0? 'mt-[80px]' : 'mt-[150px]'} `}
+                ${index_ % 4 === 0 ? 'mt-[80px]' : 'mt-[150px]'} `}
             /> 
         </div>
     );
