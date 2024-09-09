@@ -39,7 +39,7 @@ function Slider() {
             <HiChevronRight className='hidden md:block text-white text-[30px] absolute mx-8 mt-[150px] cursor-pointer right-0' 
             onClick={() => sliderRight(elementRef.current)}/>
 
-            <div className='flex overflow-x-auto w-full px-1 sm:px-16 py-4 scrollbar-hide scroll-smooth' ref={elementRef}>
+            <div className='flex overflow-x-auto w-full px-4 sm:px-16 py-4 scrollbar-hide scroll-smooth' ref={elementRef}>
                 {movieList.map((item) => (
                     item.backdrop_path && (
                         <img 
